@@ -1,25 +1,4 @@
-public class Window extends DeviceManager{
-
-    public Window(){
-        this.deviceOn = false;
-    }
-
-    public Window(Sensor observable, SmartRoom place){
-        this.place = place;
-        this.deviceOn = false;
-        this.sensor = observable;
-    }
-
-    @Override
-    public void definePlace(SmartRoom place) {
-        this.place = place;
-    }
-
-    @Override
-    public void defineObservable(Sensor observable) {
-        this.sensor = observable;
-        observable.activate(this);
-    }
+public class Window extends Device{
 
     public boolean verifyState(Sensor observable){
         if (observable instanceof Cinema){
@@ -34,13 +13,19 @@ public class Window extends DeviceManager{
     }
 
     @Override
-    public void update(){
-        boolean sensorStatus = this.verifyState(sensor);
+    public void operation(Boolean value){
+        if (this.connected != null){
+            update(value);
+        }
+    }
+
+    public void update(Boolean value){
+        boolean sensorStatus = value;
         if (sensorStatus){
-            deviceOn("Opening windows from the "+ this.place.getName());
+            System.out.println("Opening windows");
         }
         else{
-            deviceOff("Closing windows from the "+ this.place.getName());
+            System.out.println("Closing windows");
         }
     }
 }

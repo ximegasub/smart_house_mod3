@@ -1,34 +1,19 @@
-public class Light extends DeviceManager  {
-
-    public Light(){
-        this.deviceOn = false;
-    }
-
-    public Light(Sensor observable, SmartRoom place){
-        this.place = place;
-        this.deviceOn = false;
-        this.sensor = observable;
-    }
+public class Light extends Device {
 
     @Override
-    public void definePlace(SmartRoom place) {
-        this.place = place;
+    public void operation(Boolean value){
+        if (this.connected != null){
+            update(value);
+        }
     }
 
-    @Override
-    public void defineObservable(Sensor observable) {
-        this.sensor = observable;
-        observable.activate(this);
-    }
-
-    @Override
-    public void update(){
-        boolean sensorStatus = sensor.getState();
+    public void update(Boolean value){
+        boolean sensorStatus = value;
         if (sensorStatus){
-            deviceOn("Turning on lights from the "+ this.place.getName());
+            System.out.println("Turning on lights");
         }
         else{
-            deviceOff("Turning off lights from the "+ this.place.getName());
+            System.out.println("Turning off lights");
         }
     }
 }

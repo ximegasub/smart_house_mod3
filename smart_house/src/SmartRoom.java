@@ -1,8 +1,29 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class SmartRoom {
+    List<Sensor> sensors = new ArrayList<>();
     String location;
     double length;
     double width;
     String name;
+    DeviceManager deviceManager;
+
+
+    public void addSensor(Sensor sensor){
+        sensor.addObserver(this.deviceManager);
+        this.sensors.add(sensor);
+    }
+
+    public void addDevice(Device device){
+        this.deviceManager.add(device);
+    }
+    public SmartRoom(String name){
+        this.location = "middle of the house";
+        this.length = 40;
+        this.width = 20;
+        this.name = name;
+    }
 
     public SmartRoom(String location, double length, double width, String name){
         this.location = location;
@@ -50,4 +71,20 @@ public abstract class SmartRoom {
 
     abstract void configureLocation();
     abstract void configureSize();
+
+    public List<Sensor> getSensors() {
+        return sensors;
+    }
+
+    public void setSensors(List<Sensor> sensors) {
+        this.sensors = sensors;
+    }
+
+    public DeviceManager getDeviceManager() {
+        return deviceManager;
+    }
+
+    public void setDeviceManager(DeviceManager deviceManager) {
+        this.deviceManager = deviceManager;
+    }
 }

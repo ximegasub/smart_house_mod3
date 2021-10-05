@@ -1,22 +1,20 @@
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 
 public class SmartHouse {
 
     public static void main(String args[]) throws Exception{
         try{
-            SmartRoom room = new Bedroom("middle of the house", 40, 20, "bedroom");
-            System.out.println("===== Movement =====");
-            Sensor sensor = SmartBuilder.buildMovement(room);
-            sensor.setUnits("");
-            sensor.setState("on");
-            System.out.println("===== Cinema =====");
-            Sensor cinemaSensor = SmartBuilder.buildCinema(room);
-            cinemaSensor.setUnits("");
-            cinemaSensor.setState("on");
-            System.out.println("===== Temperature =====");
-            Sensor temperatureSensor = SmartBuilder.buildTemperature(room);
-            temperatureSensor.setUnits("celsius");
-            temperatureSensor.setState("10");
-            //Menu====Temperature: 10 __
+            System.out.println("===Smart House===");
+            System.out.println("Please define the room [Bedroom/Kitchen]:");
+            BufferedReader readerRoom = new BufferedReader(new InputStreamReader(System.in));
+            String name = readerRoom.readLine();
+            SmartRoom room = (SmartRoom) Class.forName(name).newInstance();
+            System.out.println("Please set the state for the Motion sensor [on/off]:");
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+            String state = reader.readLine();
+            SmartBuilder.buildMovement(state, room);
+
         }catch (Exception e){
             System.err.println(e.getMessage());
             e.printStackTrace();

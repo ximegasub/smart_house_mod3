@@ -5,6 +5,10 @@ public class Bedroom extends SmartRoom {
         super(location, length, size, name);
     }
 
+    public Bedroom(){
+        super("bedroom");
+    }
+
     @Override
     void configureLocation() {
         location = "123456+1245";

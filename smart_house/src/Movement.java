@@ -37,7 +37,7 @@ public class Movement extends Sensor {
     public void setState(String state){
         this.state = this.verifyState(state);
         System.out.println("Movement sensor state changes to " + state);
-        this.notifyObservers();
+        this.notifyAll(this.state);
     }
 
 }

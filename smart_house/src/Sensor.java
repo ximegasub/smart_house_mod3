@@ -1,8 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Sensor {
-    List<DeviceManager> devices = new ArrayList<>();
+public abstract class Sensor implements Observable {
+    List<Observer> observers = new ArrayList<>();
     protected boolean state;
     protected String units;
 
@@ -13,16 +13,21 @@ public abstract class Sensor {
     abstract boolean verifyState(String state);
 
     public void activate(DeviceManager device){
-        this.devices.add(device);
+        this.observers.add(device);
     }
 
     public void deactivate(DeviceManager device){
-        this.devices.remove(device);
+        this.observers.remove(device);
     }
 
-    public void notifyObservers(){
-        for (DeviceManager device : this.devices){
-            device.update();
+    public void notifyAll(Boolean value){
+        for (Observer observer : this.observers){
+            observer.notify(value);
         }
     }
+
+    public void addObserver( Observer observer){
+        this.observers.add(observer);
+    }
+
 }

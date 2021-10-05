@@ -53,6 +53,6 @@ public class Temperature extends Sensor {
     public void setState(String signal){
         this.state = this.verifyState(signal);
         System.out.println("Temperature Sensor state changes to " + signal + " (" + this.units + ")");
-        this.notifyObservers();
+        this.notifyAll(this.state);
     }
 }

@@ -1,34 +1,19 @@
-public class Camera extends DeviceManager{
-
-    public Camera(){
-        this.deviceOn = false;
-    }
-
-    public Camera(Sensor observable, SmartRoom place){
-        this.place = place;
-        this.deviceOn = false;
-        this.sensor = observable;
-    }
+public class Camera extends Device{
 
     @Override
-    public void definePlace(SmartRoom place) {
-        this.place = place;
+    public void operation(Boolean value){
+        if (this.connected != null){
+            update(value);
+        }
     }
 
-    @Override
-    public void defineObservable(Sensor observable) {
-        this.sensor = observable;
-        observable.activate(this);
-    }
-
-    @Override
-    public void update(){
-        boolean sensorStatus = sensor.getState();
+    public void update(Boolean value){
+        boolean sensorStatus = value;
         if (sensorStatus){
-            deviceOn("Turning on camera from the "+ this.place.getName());
+            System.out.println("Turning on camera");
         }
         else{
-            deviceOff("Turning off camera from the "+ this.place.getName());
+            System.out.println("Turning off camera");
         }
     }
 }

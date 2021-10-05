@@ -1,24 +1,18 @@
-public abstract class DeviceManager {
+public class DeviceManager implements Observer {
+    private Device device;
 
-    boolean deviceOn;
-    SmartRoom place;
-    Sensor sensor;
-
-    public boolean getDeviceOn(){
-        return this.deviceOn;
+    public void add(Device device){
+        if (this.device != null) {
+            this.device.add(device);
+        }else{
+            this.device = device;
+        }
     }
 
-    protected void deviceOn(String message){
-        System.out.println(message);
-        deviceOn = true;
-    }
 
-    protected void deviceOff(String message){
-        System.out.println(message);
-        deviceOn = false;
+    public void notify(Boolean value){
+        if (this.device != null) {
+            this.device.update(value);
+        }
     }
-
-    public abstract void update();
-    public abstract void definePlace(SmartRoom name);
-    public abstract void defineObservable(Sensor observable);
 }
