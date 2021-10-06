@@ -42,7 +42,7 @@ public class SmartHouse {
                 room = new Kitchen();
                 break;
             default:
-                // The user input an unexpected choice.
+                break;
         }
         return room;
     }
@@ -101,7 +101,7 @@ public class SmartHouse {
                 SmartBuilder.buildCinema(stateThree, room);
                 break;
             default:
-                // The user input an unexpected choice.
+                break;
         }
     }
 
