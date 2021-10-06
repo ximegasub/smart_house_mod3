@@ -1,13 +1,9 @@
-public class AirConditioning extends Device{
+package smart_devices;
+
+public class AirConditioning extends Device {
 
     @Override
-    public void operation(Boolean value){
-        if (this.connected != null){
-            update(value);
-        }
-    }
-
-    public void update(Boolean value){
+    public void display(Boolean value){
         boolean sensorStatus = value;
         if (sensorStatus){
             System.out.println("Turning on air conditioning");

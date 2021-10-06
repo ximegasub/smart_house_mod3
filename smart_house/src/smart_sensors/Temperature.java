@@ -1,3 +1,5 @@
+package smart_sensors;
+
 public class Temperature extends Sensor {
 
     public Temperature(){

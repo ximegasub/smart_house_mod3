@@ -1,3 +1,6 @@
+package smart_sensors;
+
+
 public class Cinema extends Sensor {
 
     public Cinema(){

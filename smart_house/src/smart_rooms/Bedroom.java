@@ -1,21 +1,27 @@
+package smart_rooms;
+
 public class Bedroom extends SmartRoom {
     double size;
 
     public Bedroom(String location, double length, double size, String name){
         super(location, length, size, name);
     }
-
     public Bedroom(){
         super("bedroom");
     }
 
     @Override
     void configureLocation() {
-        location = "123456+1245";
+        this.location = "left side of the house";
     }
 
     @Override
     void configureSize() {
-        size = length * width;
+        this.size = length * width;
+    }
+
+    @Override
+    void displayRoom() {
+        System.out.println("Bedroom Details -> Location: "+this.location+" - Size: "+this.size+" m2");
     }
 }

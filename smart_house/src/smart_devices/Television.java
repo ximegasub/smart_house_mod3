@@ -1,13 +1,12 @@
-public class Television extends Device{
+package smart_devices;
 
-    @Override
-    public void operation(Boolean value){
-        if (this.connected != null){
-            update(value);
-        }
+public class Television extends Device {
+    public Television(){
+        super();
     }
 
-    public void update(Boolean value){
+    @Override
+    public void display(Boolean value){
         boolean sensorStatus = value;
         if (sensorStatus){
             System.out.println("Turning on television");

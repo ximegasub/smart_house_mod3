@@ -1,13 +1,13 @@
+package smart_devices;
+
 public class Light extends Device {
 
-    @Override
-    public void operation(Boolean value){
-        if (this.connected != null){
-            update(value);
-        }
+    public Light(){
+        super();
     }
 
-    public void update(Boolean value){
+    @Override
+    public void display(Boolean value){
         boolean sensorStatus = value;
         if (sensorStatus){
             System.out.println("Turning on lights");

@@ -1,3 +1,5 @@
+package smart_sensors;
+
 public class Movement extends Sensor {
 
     public Movement(){

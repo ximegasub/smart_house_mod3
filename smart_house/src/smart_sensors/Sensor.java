@@ -1,14 +1,19 @@
+package smart_sensors;
+
+import smart_devices.DeviceManager;
+import smart_devices.Observer;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public abstract class Sensor implements Observable {
     List<Observer> observers = new ArrayList<>();
-    protected boolean state;
-    protected String units;
+    boolean state;
+    String units;
 
-    abstract void setState(String state);
-    abstract boolean getState();
-    abstract void setUnits(String units);
+    public abstract void setState(String state);
+    public abstract boolean getState();
+    public abstract void setUnits(String units);
     abstract String getUnits();
     abstract boolean verifyState(String state);
 
@@ -26,7 +31,7 @@ public abstract class Sensor implements Observable {
         }
     }
 
-    public void addObserver( Observer observer){
+    public void addObserver(Observer observer){
         this.observers.add(observer);
     }
 

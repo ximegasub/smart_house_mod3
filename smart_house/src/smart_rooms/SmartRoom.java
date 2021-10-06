@@ -1,3 +1,9 @@
+package smart_rooms;
+
+import smart_devices.Device;
+import smart_devices.DeviceManager;
+import smart_sensors.Sensor;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +24,7 @@ public abstract class SmartRoom {
     public void addDevice(Device device){
         this.deviceManager.add(device);
     }
+
     public SmartRoom(String name){
         this.location = "middle of the house";
         this.length = 40;
@@ -67,10 +74,12 @@ public abstract class SmartRoom {
     public final void execute(){
         configureLocation();
         configureSize();
+        displayRoom();
     }
 
     abstract void configureLocation();
     abstract void configureSize();
+    abstract void displayRoom();
 
     public List<Sensor> getSensors() {
         return sensors;
